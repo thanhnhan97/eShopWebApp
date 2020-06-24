@@ -1,0 +1,2 @@
+- ASP.NET CORE 3.1
+- Enity Framework Core 3.1
