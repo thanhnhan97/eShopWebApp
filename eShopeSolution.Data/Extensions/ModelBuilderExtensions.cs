@@ -1,5 +1,6 @@
 ﻿using eShopeSolution.Data.Entities;
 using eShopSolution.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -152,6 +153,42 @@ namespace eShopeSolution.Data.Extensions
                 }
 
             );
+
+            //Nhap data cho User, Role
+
+            var adminID = new Guid("D76376AE-C59C-4853-A8BA-1BFF6846AD20");
+            var roleID = new Guid("613BEB9C-BB67-4F37-8435-FA7375C7DB8F");
+            // any guid, but nothing is against to use the same one
+          
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleID,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "role admin"
+            });
+
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminID,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "nhanhanhan@yahoo.com",
+                NormalizedEmail = "nhanhanhan@yahoo.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "abc@123"),
+                SecurityStamp = string.Empty,
+                FirstName = "Nhan",
+                LastName = "Thanh",
+                DateTime = DateTime.Now
+            }) ;
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleID,
+                UserId = adminID
+            });
         }
     }
 }
