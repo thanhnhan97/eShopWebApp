@@ -54,8 +54,6 @@ namespace eShopeSolution.Data.EF
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<AppConfig> AppConfigs { get; set; }
-
-
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<CategoryTranslation> CategoryTranslations { get; set; }
