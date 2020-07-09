@@ -184,6 +184,8 @@ namespace eShopeSolution.Data.Extensions
                 DateTime = DateTime.Now
             }) ;
 
+            
+
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
             {
                 RoleId = roleID,
